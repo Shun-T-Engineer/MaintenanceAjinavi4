@@ -19,7 +19,7 @@
 		<h2>レストラン一覧</h2>
 		<table class="restaurant-list">
 			<tr>
-				<th>店舗</th>
+				<th colspan="2">店舗</th>
 				<th>店舗ID</th>
 				<th>店舗名</th>
 				<th>キャッチフレーズ</th>
@@ -33,6 +33,15 @@
 					<input type="hidden" name="restaurantName" th:value="${restaurant.restaurantName}">
 					<input type="hidden" name="catchPhrase" th:value="${restaurant.catchPhrase}">
 					<input type="submit" value="編集" class="btn">					
+				</form>
+				</td>
+				<td>
+				<form th:action="@{/remove-restaurant}" method="POST" >
+					<input type="hidden" name="restaurantId" th:value="${restaurant.restaurantId}">
+					<input type="hidden" name="restaurantName" th:value="${restaurant.restaurantName}">
+					<input type="hidden" name="catchPhrase" th:value="${restaurant.catchPhrase}">
+					<input th:if = "${restaurant.reviewCount > 0}"type="submit" value="削除" disabled>		
+					<input th:unless = "${restaurant.reviewCount > 0}"type="submit" value="削除" class="btn">				
 				</form>
 				</td>
 				<td th:text="${restaurant.restaurantId}"></td>
