@@ -91,4 +91,17 @@ public class ShopRepositoryImp implements ShopRepository {
 		
 	}
 
+	@Override
+	public void delete(Shop shop) {
+		String sql =
+				" DELETE" +
+				" FROM" +
+				" m_restaurant" +
+				" WHERE" +
+				" restaurant_id = ?";
+		
+		jdbcTemplate.update(sql,shop.getRestaurantId());
+		
+	}
+
 }

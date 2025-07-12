@@ -7,13 +7,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.example.demo.entity.Restaurant;
+import com.example.demo.entity.Shop;
 import com.example.demo.form.RestaurantRemoveForm;
+import com.example.demo.service.RestaurantRemoveService;
+
+import lombok.RequiredArgsConstructor;
 
 
-
+@RequiredArgsConstructor
 @Controller
 public class RemoveController {
+	
+	private final RestaurantRemoveService service;
 	
 	@PostMapping("/remove-restaurant")
 	public String removeRestaurant(@Validated @ModelAttribute RestaurantRemoveForm form, BindingResult result)
@@ -32,16 +37,16 @@ public class RemoveController {
 			throw new IllegalArgumentException("**removeReview()**");
 		}
 		
-		Restaurant r = new Restaurant();
+		Shop r = new Shop();
 		r.setRestaurantId(form.getRestaurantId());
 		r.setRestaurantName(form.getRestaurantName());
 		r.setCatchPhrase(form.getCatchPhrase());
 		
-		System.out.println("削除するキー一覧" + r);
+		service.remove(r);
 		
 		redirectAttributes.addFlashAttribute("msg", "レストラン削除");
 		
-		return "redirect:/complete";
+		return "redirect:/restaurant-remove-complete";
 	}
 	
 	

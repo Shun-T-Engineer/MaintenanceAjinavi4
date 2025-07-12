@@ -11,4 +11,6 @@ public interface ShopRepository {
 	List<Restaurant> selectByNameWildcard(String restaurantName);
 	
 	void update(Shop shop);
+	
+	void delete(Shop shop);
 }

@@ -6,7 +6,6 @@ import lombok.Data;
 public class Shop {
 		private Integer restaurantId;
 		private String restaurantName;
-		
 		private String catchPhrase;
 
 }

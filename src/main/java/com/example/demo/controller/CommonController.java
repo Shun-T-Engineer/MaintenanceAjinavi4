@@ -15,4 +15,9 @@ public class CommonController {
 	private String restaurantEditComplete() {
 		return "restaurant-edit-complete";
 	}
+	
+	@GetMapping("/restaurant-remove-complete")
+	private String restaurantRemoveComplete() {
+		return "restaurant-remove-complete";
+	}
 }
