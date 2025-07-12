@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>店舗登録</title>
+<link rel="stylesheet" th:href="@{/css/registShop.css}">
+</head>
+<body>
+	
+	<h2>店舗登録</h2>
+	
+	<form th:action="@{/regist-shop}" method="POST" th:object="${shopRegistForm}">
+		【店舗名】<br>
+		<input type="text" th:field="*{restaurantName}"><br>
+		<div th:errors="*{restaurantName}" class="error-msg"></div>
+		<br>
+		【キャッチフレーズ】<br>
+		<input type="text" th:field="*{catchPhrase}"><br>
+		<div th:errors="*{catchPhrase}" class="error-msg"></div>
+		<br>
+		<input type="submit" value="登録" class="btn">
+	</form>
+	<a href="/mt-top">管理メニューに戻る</a>
+
+</body>
+</html>
